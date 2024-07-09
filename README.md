@@ -61,4 +61,7 @@ aaa 覆盖xxx
 ## 最佳实践
 - 将项目容器作为一个 Git 主仓库，src-main、src-xxx、src-aaa 等等业务代码作为子仓库，各子仓库的更新一目了然。
 - 可以将 node cnode xxxx 命令写入 package.json 的快速启动命令中。
+- src-main中写好标准化产品逻辑，node cnode main应该得到一个标准化的产品。
+- src-xxx 中为某公司写私有化，***仅仅更改需要定制化的部分***
+- 每次bug修复和产品功能更新，只需要关注于main中的主逻辑代码即可，若涉及到私有化同名文件再单独更新
 
