@@ -4,7 +4,8 @@
 cnode，私有化项目一个bug只要改一遍！
 
 ## 项目原理
-将不同路径的src-xx基于src-main编译成最终私有化版本的src交给编译器编译，不影响编译流程，只帮你混合代码
+- 将不同路径的src-xx基于src-main编译成最终私有化版本的src交给编译器编译，不影响编译流程，只帮你混合代码
+- 允许多层覆盖如```node cnode xxx aaa```即 aaa 覆盖 xxx 覆盖 main
 
 ## 项目结构
 - src-main 标准化目录，所有的产品最终与main混合 main的覆盖优先级永远最低
@@ -38,8 +39,23 @@ cnode，私有化项目一个bug只要改一遍！
 ```
 
 ## 其他
+### serve模式
 ```
 node cnode xxxx --mode=serve 时，不会执行 npm run dev命令,不会持续监听文件修改， 一般用于jenkins打包使用
+```
+### .cnode文件
+一行一个，第一个是main，后面是其他参与混合的包
+如 node cnode xxx aaa 即：
+```
+main
+xxx
+aaa
+```
+解释：
+```
+main 最终导出至src
+xxx 覆盖main
+aaa 覆盖xxx
 ```
 
 ## 最佳实践
